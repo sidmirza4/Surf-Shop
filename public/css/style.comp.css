@@ -1261,6 +1261,9 @@ input[type=number] {
   @media only screen and (max-width: 800px) {
     .register {
       padding: 4rem 6rem; } }
+  @media only screen and (max-width: 500px) {
+    .register {
+      padding: 2rem 3rem; } }
   .register__heading {
     text-align: center; }
   .register__form {
@@ -1277,6 +1280,9 @@ input[type=number] {
   .register__form-group {
     grid-column: 2 / 6;
     justify-self: stretch; }
+    @media only screen and (max-width: 500px) {
+      .register__form-group {
+        grid-column: 1 / -1; } }
     .register__form-group--file {
       grid-column: 2 / 3;
       grid-row: 4 / -1;
@@ -1285,18 +1291,27 @@ input[type=number] {
         .register__form-group--file {
           grid-column: 2 / 4;
           grid-row: 5 / -1; } }
+      @media only screen and (max-width: 500px) {
+        .register__form-group--file {
+          grid-column: 1 / 4; } }
     .register__form-group--1 {
       grid-column: 2 / 4;
       justify-self: stretch; }
       @media only screen and (max-width: 800px) {
         .register__form-group--1 {
           grid-column: 2 / 6; } }
+      @media only screen and (max-width: 500px) {
+        .register__form-group--1 {
+          grid-column: 1 / -1; } }
     .register__form-group--2 {
       grid-column: 4 / 6;
       justify-self: stretch; }
       @media only screen and (max-width: 800px) {
         .register__form-group--2 {
           grid-column: 2 / 6; } }
+      @media only screen and (max-width: 500px) {
+        .register__form-group--2 {
+          grid-column: 1 / -1; } }
   .register__btn {
     grid-column: 5 / 6;
     grid-row: 4 / -1;
@@ -1305,6 +1320,9 @@ input[type=number] {
       .register__btn {
         grid-row: 5 / -1;
         grid-column: 4 / 6; } }
+    @media only screen and (max-width: 500px) {
+      .register__btn {
+        grid-column: 4 / 7; } }
 
 .resetPw {
   grid-column: 2 / 3;
