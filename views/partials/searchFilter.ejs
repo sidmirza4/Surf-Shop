@@ -42,53 +42,53 @@
         </div>
     
         <div class="filter__div filter__div--price">
-            <div>
+            <div class="filter__div--price-group">
                 <input class="filter__input filter__input--price" type="number" id="min" name="price[min]" min="0" max="10000" step="1" placeholder="Min Price" value="<%= query.price ? query.price.min : '' %>">
                 <label class = "filter__label" for="min">Min Price</label>
             </div>
-            <div>
+            <div class="filter__div--price-group">
                 <input class="filter__input filter__input--price" type="number" id="max" name="price[max]" min="0" max="10000" step="1" placeholder="Max Price" value="<%= query.price ? query.price.max : '' %>">
                 <label class = "filter__label" for="max">Max Price</label>
             </div>
         </div>
     
         <div class="filter__div filter__div--rating">
-            <div class="filter__rating checkbox-group">
+            <div class="filter__rating filter__rating--0 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="zero-stars" value="0" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '0') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="zero-stars">
                     <span class="checkbox-btn"></span>0 stars
                 </label>
             </div>
             
-             <div class="filter__rating checkbox-group">
+             <div class="filter__rating filter__rating--1 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="one-star" value="1" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '1') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="one-star">
                     <span class="checkbox-btn"></span>1 star
                 </label>
             </div>
             
-             <div class="filter__rating checkbox-group">
+             <div class="filter__rating filter__rating--2 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="two-stars" value="2" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '2') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="two-stars">
                     <span class="checkbox-btn"></span>2 stars
                 </label>
             </div>
             
-             <div class="filter__rating checkbox-group">
+             <div class="filter__rating filter__rating--3 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="three-stars" value="3" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '3') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="three-stars">
                     <span class="checkbox-btn"></span>3 stars
                 </label>
             </div>
             
-             <div class="filter__rating checkbox-group">
+             <div class="filter__rating filter__rating--4 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="four-stars" value="4" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '4') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="four-stars">
                     <span class="checkbox-btn"></span>4 stars
                 </label>
             </div>
             
-             <div class="filter__rating checkbox-group">
+             <div class="filter__rating filter__rating--5 checkbox-group">
                 <input class="checkbox-input" type="checkbox" id="five-stars" value="5" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '5') ? 'checked' : '' %>>
                 <label class="checkbox-label"  for="five-stars">
                     <span class="checkbox-btn"></span>5 stars

@@ -336,10 +336,10 @@ body {
     align-items: stretch; }
     @media only screen and (max-width: 800px) {
       .filter__form {
-        grid-template-rows: 1fr 1fr 2fr .5fr .5fr; } }
+        grid-template-rows: repeat(2, 1fr) 2fr repeat(2, 0.5fr); } }
     @media only screen and (max-width: 500px) {
       .filter__form {
-        grid-template-rows: 1fr 2fr 2fr .5fr .5fr; } }
+        grid-template-rows: 1fr repeat(2, 2fr) repeat(3, 0.5fr); } }
   .filter__div--search {
     grid-column: 5 / 9; }
     @media only screen and (max-width: 800px) {
@@ -352,28 +352,47 @@ body {
     justify-content: space-between; }
     @media only screen and (max-width: 800px) {
       .filter__div--location {
-        grid-column: 2 / 12; } }
+        grid-column: 1 / 13; } }
   .filter__div--price {
     grid-column: 7 / 13;
     display: flex;
-    justify-content: space-evenly; }
+    justify-content: stretch; }
     @media only screen and (max-width: 1100px) {
       .filter__div--price {
         flex-direction: column;
-        align-items: center; } }
+        grid-column: 8 / 12; } }
     @media only screen and (max-width: 800px) {
       .filter__div--price {
-        grid-column: 1 / 13;
+        grid-column: 3 / 11;
         grid-row: 2 / 3;
         flex-direction: row; } }
     @media only screen and (max-width: 500px) {
       .filter__div--price {
+        grid-column: 4 / 10;
         flex-direction: column; } }
+  .filter__div--price-group {
+    flex-basis: calc((100% - 3rem)/2); }
+    .filter__div--price-group:not(:last-child) {
+      margin-right: 3rem; }
+      @media only screen and (max-width: 1100px) {
+        .filter__div--price-group:not(:last-child) {
+          margin-right: 0; } }
+      @media only screen and (max-width: 800px) {
+        .filter__div--price-group:not(:last-child) {
+          margin-right: 3rem; } }
+      @media only screen and (max-width: 500px) {
+        .filter__div--price-group:not(:last-child) {
+          margin-right: 0; } }
   .filter__div--rating {
     grid-column: 2 / -1;
     justify-self: space-evenly;
     display: flex;
     justify-content: space-evenly; }
+    @media only screen and (max-width: 500px) {
+      .filter__div--rating {
+        grid-column: 2 / -2;
+        grid-row: 4 / 6;
+        flex-wrap: wrap; } }
   .filter__div--reset {
     grid-column: 5 / 7;
     justify-self: center; }
@@ -428,6 +447,10 @@ body {
   .filter__rating {
     display: flex;
     align-items: center; }
+    @media only screen and (max-width: 500px) {
+      .filter__rating {
+        flex-basis: 33.33%;
+        justify-content: center; } }
   .filter__input {
     border: none;
     box-shadow: 0.2rem 1rem 3rem rgba(0, 0, 0, 0.6), -0.2rem -1rem 3rem rgba(0, 0, 0, 0.6);
@@ -445,11 +468,8 @@ body {
     .filter__input--location {
       width: 72%;
       margin-right: 1.6rem; }
-    .filter__input--price:not(:last-child) {
-      margin-right: 3rem; }
-      @media only screen and (max-width: 1100px) {
-        .filter__input--price:not(:last-child) {
-          margin-right: 0; } }
+    .filter__input--price {
+      width: 100%; }
   .filter__input:placeholder-shown ~ .filter__label {
     opacity: 0;
     visibility: hidden;
@@ -778,7 +798,8 @@ input[type=number] {
     .posts {
       grid-row-gap: 8rem;
       padding: 0 2rem;
-      margin: 0; } }
+      margin: 0;
+      width: 100%; } }
   .posts__map-container {
     grid-row: 1 / -1;
     grid-column: 1 / 2;
@@ -933,7 +954,8 @@ input[type=number] {
   .landing__heading {
     display: flex;
     align-items: center;
-    justify-content: center; }
+    justify-content: center;
+    text-align: center; }
   .landing__map-section {
     width: 100%;
     background-size: cover;
@@ -1535,7 +1557,7 @@ input[type=number] {
       color: #2574A9; }
       @media only screen and (max-width: 800px) {
         .postShow__review-rating {
-          grid-column: 1 / 3;
+          grid-column: 1 / 5;
           grid-row: 3 / 4; } }
     .postShow__review-editBtn {
       grid-column: 11 / 12;
@@ -1650,7 +1672,7 @@ input[type=number] {
     justify-items: center; }
     @media only screen and (max-width: 1400px) {
       .boilerplate__main {
-        height: 100vh;
+        height: max-content;
         padding: 12rem 0; } }
   .boilerplate__secondary {
     height: 100vh;
@@ -1677,6 +1699,9 @@ input[type=number] {
     align-items: center; }
   .footer__logo {
     font-size: 6rem; }
+    @media only screen and (max-width: 1100px) {
+      .footer__logo {
+        margin-bottom: 1rem; } }
   .footer__logo-text {
     font-size: 4rem;
     font-weight: 300;
@@ -1695,17 +1720,27 @@ input[type=number] {
     @media only screen and (max-width: 800px) {
       .footer__content {
         padding: 2rem 3rem 0 3rem; } }
+    @media only screen and (max-width: 500px) {
+      .footer__content {
+        padding: 2rem 2rem 0 2rem; } }
   @media only screen and (max-width: 1100px) {
     .footer__navigation {
       margin-bottom: 2rem; } }
   .footer__list {
     display: flex;
     list-style: none; }
+    @media only screen and (max-width: 500px) {
+      .footer__list {
+        flex-direction: column;
+        align-items: center; } }
   .footer__item {
     padding: 0 1.5rem; }
     @media only screen and (max-width: 800px) {
       .footer__item {
         padding: 0 1rem; } }
+    @media only screen and (max-width: 500px) {
+      .footer__item {
+        padding: 1rem 2rem; } }
   .footer__link, .footer__link:link, .footer__link:visited {
     font-weight: 600;
     text-decoration: none;
@@ -1717,7 +1752,8 @@ input[type=number] {
   .footer__copyright-text {
     font-weight: 600;
     padding: 1rem;
-    transition: .3s linear all; }
+    transition: .3s linear all;
+    text-align: center; }
     .footer__copyright-text:hover {
       box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
@@ -1903,3 +1939,6 @@ input[type=number] {
       z-index: -1;
       transition: .3s ease letter-spacing;
       text-align: center; }
+      @media only screen and (max-width: 500px) {
+        .navbar__mobile-link::after {
+          font-size: 12rem; } }

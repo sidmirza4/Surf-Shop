@@ -26,11 +26,11 @@
         align-items: stretch;
         
         @include respond(tab-port){
-            grid-template-rows: 1fr 1fr 2fr .5fr .5fr;
+            grid-template-rows: repeat(2, 1fr) 2fr repeat(2, .5fr);
         }
         
         @include respond(phone){
-            grid-template-rows: 1fr 2fr 2fr .5fr .5fr;
+            grid-template-rows: 1fr repeat(2, 2fr) repeat(3, .5fr);
         }
     }
     
@@ -50,28 +50,49 @@
             justify-content: space-between;
             
             @include respond(tab-port){
-                grid-column: 2 / 12;
+                grid-column: 1 / 13;
             }
         }
         
         &--price{
             grid-column: 7 / 13;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: stretch;
             
             @include respond(tab-land){
                 flex-direction: column;
-                align-items: center;
+                grid-column: 8 / 12;
             }
             
             @include respond(tab-port){
-                grid-column: 1 / 13;
+                grid-column: 3 / 11;
                 grid-row: 2 / 3;
                 flex-direction: row;
             }
             
             @include respond(phone){
+                grid-column: 4 / 10;
                 flex-direction: column;
+            }
+        }
+        
+        &--price-group{
+            flex-basis: calc((100% - 3rem)/2);
+            
+            &:not(:last-child){
+                margin-right: 3rem;
+                
+                @include respond(tab-land){
+                    margin-right: 0;
+                }
+                
+                @include respond(tab-port){
+                    margin-right: 3rem;
+                }
+                
+                @include respond(phone){
+                    margin-right: 0;
+                }
             }
         }
         
@@ -80,6 +101,12 @@
             justify-self: space-evenly;
             display: flex;
             justify-content: space-evenly;
+            
+            @include respond(phone){
+                grid-column: 2 / -2;
+                grid-row: 4 / 6;
+                flex-wrap: wrap;
+            }
         }
         
         &--reset{
@@ -159,6 +186,11 @@
     &__rating{
         display: flex;
         align-items: center;
+        
+        @include respond(phone){
+            flex-basis: 33.33%;
+            justify-content: center;
+        }
     }
     
     &__input{
@@ -186,13 +218,7 @@
         }
         
         &--price{
-            &:not(:last-child){
-                margin-right: 3rem;
-                
-                @include respond(tab-land){
-                    margin-right: 0;
-                }
-            }
+            width: 100%;
         }
     }
     

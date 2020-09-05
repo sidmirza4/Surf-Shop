@@ -15,6 +15,10 @@
     
     &__logo{
         font-size: 6rem;
+        
+        @include respond(tab-land) {
+            margin-bottom: 1rem;
+        }
     }
     
     &__logo-text{
@@ -39,6 +43,11 @@
         @include respond(tab-port){
             padding: 2rem 3rem 0 3rem;
         }
+        
+        @include respond(phone){
+            padding: 2rem 2rem 0 2rem;
+        }
+        
     }
     
     &__navigation {
@@ -50,6 +59,11 @@
     &__list{
         display: flex;
         list-style: none;
+        
+        @include respond(phone){
+            flex-direction: column;
+            align-items: center;
+        }
     }
     
     &__item{
@@ -57,6 +71,10 @@
         
         @include respond(tab-port) {
             padding: 0 1rem;
+        }
+        
+        @include respond(phone) {
+            padding: 1rem 2rem;
         }
     }
     
@@ -80,6 +98,7 @@
         font-weight: 600;
         padding: 1rem;
         transition: .3s linear all;
+        text-align: center;
         
         &:hover{
             box-shadow: 1rem 1rem 2rem rgba($col-black, .2);

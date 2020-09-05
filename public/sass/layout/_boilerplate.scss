@@ -14,7 +14,7 @@
         justify-items: center;
         
         @include respond(mini-desk) {
-            height: 100vh;
+            height: max-content;
             padding: 12rem 0;
         }
     }
