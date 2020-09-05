@@ -14,7 +14,6 @@
         justify-items: center;
         
         @include respond(mini-desk) {
-            height: max-content;
             padding: 12rem 0;
         }
     }
@@ -28,8 +27,8 @@
         justify-items: stretch;
     
         @include respond(mini-desk) {
-            height: auto;
             padding: 12rem 0;
+            height: auto;
         }
         
     }
