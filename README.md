@@ -1,7 +1,7 @@
 # Surf-Shop
 Welcome Guys! This repo consists of my code for Surf-Shop from Ian's Code with Node course. In the course, Ian taught us the complete back-end part, but due to some reasons, he was unable to do the front-end. So, me and my friend [Sid](https://github.com/sidmirza4), did the front-end part.  
 
-We have deployed the website on Heroku, and you can check it using the following link ...
+We have deployed the website on Heroku, and you can check it using the following link...  
 https://surfshop24.herokuapp.com/  
 Feel free to explore the website & make sure to leave us some Feedback.
 
@@ -11,8 +11,8 @@ Feel free to explore the website & make sure to leave us some Feedback.
 -> Geospatial Indexing  
 -> Search Feature  
 -> Filtering Feature   
--> Pagination using Mongoose Paginate
--> Cloudinary & Multer
+-> Pagination using Mongoose Paginate  
+-> Cloudinary & Multer  
 -> Image Upload (Single and Multiple)  
 -> Extensive Use of Sass  
 -> CSS Grid & Flexbox    
