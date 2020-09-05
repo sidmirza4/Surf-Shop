@@ -1,0 +1,26 @@
+.flash{
+    position: absolute;
+    width: 100%;
+    top: 8vh;
+    left: 0;
+    z-index: 1000;
+    font-size: 1.4rem;
+    
+    display: flex;
+    justify-content: center;
+    animation: fadeOut 2s ease forwards;
+}
+
+.flash-message{
+    padding: 1.2rem 2rem;
+    color: $col-grey-l-1;
+    border-radius: 1rem;
+    
+    &--success{
+        background-color: rgba($col-success, 0.9);
+    }
+    
+    &--error{
+        background-color: rgba($col-danger, 0.9);
+    }
+}

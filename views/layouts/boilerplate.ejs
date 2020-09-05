@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Raleway:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src="https://kit.fontawesome.com/49b4b0b11c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+
+<body class="boilerplate">
+    <header class="header">
+        <% include ../partials/navbar %>
+        <% include ../partials/flash-messages %>
+    </header>
+    
+    <main class="boilerplate__main">
+        <%- body -%>
+    </main>
+    
+    <% include ../partials/footer.ejs %>
+</body>
+
+<script>
+    $(function () {
+        var $nav = $(".navbar");
+        $nav.addClass("navbar--boilerplate");
+    });
+</script>
+
+</html>
+
+

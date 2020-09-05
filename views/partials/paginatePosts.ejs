@@ -1,0 +1,23 @@
+<div class="paginate mb-huge mt-huge" >
+    <% if (posts.page-1) { %>
+        <li class="paginate__item">
+            <a class="paginate__link" href="<%= paginateUrl %><%= posts.page-1 %>"><i class="fas fa-chevron-left"></i></a>
+        </li>
+    <% } %>
+    <% if (posts.pages > 1 && posts.docs.length) { %>
+        <% for(let i =1; i <= posts.pages; i++){ %>
+            <li class="paginate__item paginate__num">
+                <a class="paginate__link"  href="<%= paginateUrl %><%= i %>">
+                    <%= i %>
+                </a>
+            </li>
+        <% } %>
+    <% } %>
+    <% if ((posts.page+1) <= posts.pages) { %>
+    <li class="paginate__item">
+        <a class="paginate__link" href="<%= paginateUrl %><%= posts.page+1 %>"><i class="fas fa-chevron-right"></i></a>
+    </li>
+    <% } %>
+</div>
+
+<script src = "/javascripts/paginate.js"></script>

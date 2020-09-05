@@ -1,0 +1,110 @@
+<div class="filter">
+    <form class="filter__form" action="/posts" method="GET">
+        
+        <div class="filter__div filter__div--search">
+            <input class = "filter__input filter__input--search" type="text" id="search" placeholder="Search" name="search" value="<%= query.search %>">
+            <label class="filter__label" for="search">Search</label>
+        </div>
+    
+        <div class="filter__div filter__div--location">
+            <div class="filter__location filter__location--1">
+                <p class="filter__location-status" id="status"></p>
+                <input class = "filter__input filter__input--location" type="text" id="location" name="location" value="<%= query.location %>" placeholder="Address or Zip Code">
+                <button class="filter__location-icon">
+                    <a class="filter__location-icon--link" href="#" id="find-me"><i class="fas fa-map-marker-alt"></i></a>
+                </button>
+                <label class = "filter__label filter__label--location" for="location">Address or Zip Code</label>
+            </div>
+            
+            <div class="filter__location filter__location--2">
+                <div class = "filter__location-radio radio-group">
+                    <input class = "radio-input" type="radio" name="distance" value="25" id="distance25" <%= query.distance==='25' ? 'checked' : '' %>>
+                    <label class = "radio-label" for="distance25">
+                        <span class="radio-btn"></span>25mi
+                    </label>
+                </div>
+                <div class="filter__location-radio radio-group">
+                    <input class = "radio-input" type="radio" name="distance" value="50" id="distance50" <%= query.distance==='50' ? 'checked' : '' %>>
+                    <label class = "radio-label" for="distance50">
+                        <span class="radio-btn"></span>50mi
+                    </label>
+                </div>
+                <div class = "filter__location-radio radio-group">
+                    <input class = "radio-input" type="radio" name="distance" value="100" id="distance100" <%= query.distance==='100' ? 'checked' : '' %>>
+                    <label class = "radio-label" for="distance100">
+                        <span class = "radio-btn"></span>100mi
+                    </label>
+                </div>
+                <button class="btn">
+                    <a class="btn__link" href="#" id="clear-distance">Clear</a>
+                </button>
+            </div>
+        </div>
+    
+        <div class="filter__div filter__div--price">
+            <div>
+                <input class="filter__input filter__input--price" type="number" id="min" name="price[min]" min="0" max="10000" step="1" placeholder="Min Price" value="<%= query.price ? query.price.min : '' %>">
+                <label class = "filter__label" for="min">Min Price</label>
+            </div>
+            <div>
+                <input class="filter__input filter__input--price" type="number" id="max" name="price[max]" min="0" max="10000" step="1" placeholder="Max Price" value="<%= query.price ? query.price.max : '' %>">
+                <label class = "filter__label" for="max">Max Price</label>
+            </div>
+        </div>
+    
+        <div class="filter__div filter__div--rating">
+            <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="zero-stars" value="0" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '0') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="zero-stars">
+                    <span class="checkbox-btn"></span>0 stars
+                </label>
+            </div>
+            
+             <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="one-star" value="1" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '1') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="one-star">
+                    <span class="checkbox-btn"></span>1 star
+                </label>
+            </div>
+            
+             <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="two-stars" value="2" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '2') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="two-stars">
+                    <span class="checkbox-btn"></span>2 stars
+                </label>
+            </div>
+            
+             <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="three-stars" value="3" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '3') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="three-stars">
+                    <span class="checkbox-btn"></span>3 stars
+                </label>
+            </div>
+            
+             <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="four-stars" value="4" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '4') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="four-stars">
+                    <span class="checkbox-btn"></span>4 stars
+                </label>
+            </div>
+            
+             <div class="filter__rating checkbox-group">
+                <input class="checkbox-input" type="checkbox" id="five-stars" value="5" name="avgRating[]" <%= query.avgRating && query.avgRating.includes( '5') ? 'checked' : '' %>>
+                <label class="checkbox-label"  for="five-stars">
+                    <span class="checkbox-btn"></span>5 stars
+                </label>
+            </div>
+        </div>
+    
+        <button class="filter__div--reset btn">
+            <a class="btn__link filter__div--reset-link" href="/posts">Reset Form</a>
+        </button>
+
+        <button class="filter__div--submit btn">
+            Submit
+        </button>
+        
+    </form>
+</div>
+
+<script src="/javascripts/use-my-location.js"></script>

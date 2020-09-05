@@ -1,0 +1,55 @@
+<style>
+    .swiper-container {
+      width: 50rem;
+      height: 50rem;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+    }
+    
+    @media only screen and (max-width: 800px) {
+        .swiper-container {
+            height: 40rem;
+            width: 40rem;
+        }
+    }
+</style>
+
+<div class="postShow__images"> 
+    <div class = "swiper-container">
+        <div class = "swiper-wrapper">
+            <% post.images.forEach(function(image){ %>
+                <!--<div class="swiper-slide">-->
+                <!--    <img class = "postShow__image" src="<%= image.url %> " alt="Surf Board Images">-->
+                <!--</div>-->
+                <div class="swiper-slide" style="background-image:url('<%= image.url %>')"></div>
+            <% }); %>
+        </div>
+        
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        speed: 900,
+        autoplay: {
+            delay: 1000,
+        },
+        effect: 'cube',
+        loop: true,
+        grabCursor: true,
+        cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 25,
+        shadowScale: 0.85,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+  </script>
+

@@ -1,0 +1,9 @@
+.header{
+    position: relative;
+    
+    &--index{
+        height: max-content;
+        width: 100%;
+        background-image: linear-gradient(rgba($col-black, .5), rgba($col-black, .5)), url('../images/index.jpg');
+    }
+}

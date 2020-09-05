@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Raleway:wght@100;200;300;400;600&display=swap" rel="stylesheet">  
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+    <script src="https://kit.fontawesome.com/49b4b0b11c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <header class="header header--index">
+        <div class = "navbar__mobile">
+            <ul class="navbar__mobile-list">
+                <% if (!currentUser) { %>
+                    <li class="navbar__mobile-item"><a data-after="Home" class = "navbar__mobile-link" href="/posts">Home</a></li>
+                    <li class="navbar__mobile-item"><a data-after="About" class = "navbar__mobile-link" href="/about">About</a></li>
+                    <li class="navbar__mobile-item"><a data-after="Contact" class = "navbar__mobile-link" href="/about">Contact</a></li>
+                    <li class="navbar__mobile-item"><a data-after="Register" class = "navbar__mobile-link" href="/register">Register</a></li>
+                    <li class="navbar__mobile-item"><a data-after="Login" class = "navbar__mobile-link" href="/login">Login</a></li>
+                <% } else { %>
+                    <li class="navbar__mobile-item"><a data-after="Home" class = "navbar__mobile-link" href="/posts">Home</a></li>
+                    <li class="navbar__mobile-item"><a data-after="About" class = "navbar__mobile-link" href="/about">About</a></li>
+                    <li class="navbar__mobile-item"><a data-after="New Post" class = "navbar__mobile-link" href="/posts/new">New Post</a></li>
+                    <li class="navbar__mobile-item"><a data-after="Profile" class = "navbar__mobile-link" href="/profile">Profile</a></li>
+                    <li class="navbar__mobile-item"><a data-after="Logout" class = "navbar__mobile-link" href="/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <a href = "/" class="navbar__logo-icon"><i class="fab fa-skyatlas"></i></a>
+            </div>
+            
+            <div class="navbar__menu">
+                <div class="navbar__hamburger">
+                    <div class="navbar__bar"></div>
+                </div>
+                <ul class="navbar__list">
+                    <% if (!currentUser) { %>
+                        <li class="navbar__item"><a data-after="Home" class = "navbar__link" href="/posts">Home</a></li>
+                        <li class="navbar__item"><a data-after="About" class = "navbar__link" href="/about">About</a></li>
+                        <li class="navbar__item"><a data-after="Contact" class = "navbar__link" href="/about">Contact</a></li>
+                        <li class="navbar__item"><a data-after="Register" class = "navbar__link" href="/register">Register</a></li>
+                        <li class="navbar__item"><a data-after="Login" class = "navbar__link" href="/login">Login</a></li>
+                    <% } else { %>
+                        <li class="navbar__item"><a data-after="Home" class = "navbar__link" href="/posts">Home</a></li>
+                        <li class="navbar__item"><a data-after="About" class = "navbar__link" href="/about">About</a></li>
+                        <li class="navbar__item"><a data-after="New Post" class = "navbar__link" href="/posts/new">New Post</a></li>
+                        <li class="navbar__item"><a data-after="Profile" class = "navbar__link" href="/profile">Profile</a></li>
+                        <li class="navbar__item"><a data-after="Logout" class = "navbar__link" href="/logout">Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+            
+        <script src="/javascripts/navbar.js" ></script>
+        
+        <% include ../partials/flash-messages %>
+        <% include ../partials/searchFilter %>
+    </header>
+    
+    <main class = "posts">
+        <div class="posts__map-container">
+            <h1 class="posts__map-heading heading-primary">Map</h1>
+            <div class = "posts__map" id="map"></div>
+        </div>
+        <div class = "posts__allPosts-container">
+            <h1 class="posts__surf-heading heading-primary">Surf-Boards</h1>
+            <% posts.docs.forEach(function(post){ %>
+                <div class="post">
+                    <div class = "post__front">
+                        <img class = "post__img" src="<%= post.images[0].url %>" alt = "<%= post.title %>">
+                    </div>
+                    <div class="post__back">
+                        <h2 class="post__title heading-secondary heading-secondary--light mb-xs"><%= post.title %></h2>
+                        <p class="post__description mb-xs"><%= post.description.substring(0, 125) %>...</p>
+                        <p class="post__location mb-xs"><%= post.location %></p>
+                        <h4 class="post__price mb-xs">$ <%= post.price %></h4>
+                        <button class = "post__btn btn btn--blue mb-xs">
+                            <a class="btn__link" href="/posts/<%= post.id %>">View More</a>
+                        </button>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    
+    <% include ../partials/paginatePosts %>
+    <% include ../partials/footer.ejs %>
+    
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".navbar");
+                $nav.toggleClass("navbar--scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+        
+        mapboxgl.accessToken = "<%= mapBoxToken %>";
+        var posts = {
+            features: <%- JSON.stringify(posts.docs) %>
+        };
+    </script>
+    <script src="/javascripts/allPostsClusterMap.js"></script>
+    <script src="/javascripts/post-index.js"></script>
+</body>
+
+</html>
+

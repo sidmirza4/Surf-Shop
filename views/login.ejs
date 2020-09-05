@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="login">
+    <h1 class = "heading-primary heading-primary--light login__heading mb-medium">Login to Surf Shop</h1>
+    <form class="form login__form" action="/login" method="POST">
+        <div class="login__form-group">
+            <label class = "form__label" for="username">Username: </label>
+            <input class = "form__input" type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+        <div class="login__form-group">
+            <label class = "form__label" for="password">Password:</label>
+            <input class = "form__input" type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <button class = "btn btn--success login__btn">Login</button>
+        <button class="login__forgot-btn btn btn--blue">
+            <a class = "btn__link" href="/forgot-password">Forgot Password</a>
+        </button>
+    </form>
+</div>

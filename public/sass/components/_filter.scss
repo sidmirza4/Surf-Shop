@@ -1,0 +1,219 @@
+.filter{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    font-family: $font-pri;
+    z-index: 2;
+    padding: 2rem 0 5rem 0;
+    
+    @include respond(mini-desk){
+        width: 100%;
+        padding: 2rem 5rem 5rem 5rem;
+    }
+    
+    @include respond(tab-port){
+        padding: 4rem 0;
+    }
+    
+    &__form{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 1fr 2fr repeat(2, .5fr);
+        row-gap: 4rem;
+        column-gap: 1rem;
+        justify-items: stretch;
+        align-items: stretch;
+        
+        @include respond(tab-port){
+            grid-template-rows: 1fr 1fr 2fr .5fr .5fr;
+        }
+        
+        @include respond(phone){
+            grid-template-rows: 1fr 2fr 2fr .5fr .5fr;
+        }
+    }
+    
+    &__div{
+        &--search{
+            grid-column: 5 / 9;
+            
+            @include respond(tab-port){
+                grid-column: 3 / 11;
+            }
+        }
+        
+        &--location{
+            grid-column: 1 / 7;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+            @include respond(tab-port){
+                grid-column: 2 / 12;
+            }
+        }
+        
+        &--price{
+            grid-column: 7 / 13;
+            display: flex;
+            justify-content: space-evenly;
+            
+            @include respond(tab-land){
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            @include respond(tab-port){
+                grid-column: 1 / 13;
+                grid-row: 2 / 3;
+                flex-direction: row;
+            }
+            
+            @include respond(phone){
+                flex-direction: column;
+            }
+        }
+        
+        &--rating{
+            grid-column: 2 / -1;
+            justify-self: space-evenly;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        &--reset{
+            grid-column: 5 / 7;
+            justify-self: center;
+            
+            @include respond(tab-port){
+                grid-column: 4 / 7;
+            }
+        }
+        
+        &--submit{
+            grid-column: 7 / 9;
+            justify-self: center;
+            
+            @include respond(tab-port){
+                grid-column: 7 / 10;
+            }
+        }
+    }
+    
+    &__location{
+        &--1{
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 17%;
+            justify-content: flex-start;
+            position: relative;
+        }
+        &--2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 65%;
+            margin: 0 auto;
+            
+            @include respond(tab-land){
+                width: 80%;
+            }
+        }
+    }
+    
+    &__location-icon{
+        font-size: 3rem;
+        background-color: transparent;
+        border: none;
+        
+        &--link{
+            color: $col-grey-l-1;
+        }
+    }
+    
+    &__location-status {
+        width: 100%;
+        position: absolute;
+        transform: translateY(-3rem);
+        color: $col-grey-l-1;
+        font-weight: 600;
+        padding-left: 2.5rem;
+    }
+    
+    &__location-radio{
+        display: flex;
+        align-items: center;
+    }
+    
+    &__label{
+        color: $col-grey-l-1;
+        font-family: $font-pri;
+        font-weight: 600;
+        display: block;
+        transform: translateY(1rem);
+        padding-left: 2.5rem;
+        transition: .3s all;
+    }
+    
+    &__rating{
+        display: flex;
+        align-items: center;
+    }
+    
+    &__input{
+        border: none;
+        box-shadow: .2rem 1rem 3rem rgba($col-black, .6), -.2rem -1rem 3rem rgba($col-black, .6);
+        padding: 1.5rem 2.5rem;
+        outline: none;
+        font-family: inherit;
+        font-weight: 600;
+        background-color: transparent;
+        color: $col-grey-l-1;
+        
+        &::placeholder{
+            opacity: 1;
+            color: $col-grey-l-1;
+        }
+        
+        &--search{
+            width: 100%;
+        }
+        
+        &--location{
+            width: 72%;
+            margin-right: 1.6rem;
+        }
+        
+        &--price{
+            &:not(:last-child){
+                margin-right: 3rem;
+                
+                @include respond(tab-land){
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    
+    &__input:placeholder-shown~&__label{
+        opacity: 0;
+        visibility: hidden;
+        padding-left: 2.5rem;
+        transform: translateY(-3.5rem);
+    }
+    
+    &__label--location{
+        width: 100%;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

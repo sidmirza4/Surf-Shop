@@ -1,0 +1,36 @@
+.boilerplate{
+    background-image: linear-gradient(to right bottom,
+    rgba($col-black, 0.6),
+    rgba($col-black, 0.6)
+    ), url("/images/boiler.jpg");
+    background-size: cover;
+    
+    &__main{
+        height: 100vh;
+        
+        display: grid;
+        grid-template-columns: minmax(5rem, 8rem) 1fr minmax(5rem, 8rem);
+        align-items: center;
+        justify-items: center;
+        
+        @include respond(mini-desk) {
+            height: 100vh;
+            padding: 12rem 0;
+        }
+    }
+    
+    &__secondary{
+        height: 100vh;
+        
+        display: grid;
+        grid-template-columns: minmax(5rem, 8rem) 1fr minmax(5rem, 8rem);
+        align-items: center;
+        justify-items: stretch;
+    
+        @include respond(mini-desk) {
+            height: auto;
+            padding: 12rem 0;
+        }
+        
+    }
+}

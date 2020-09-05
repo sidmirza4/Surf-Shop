@@ -1,0 +1,133 @@
+<% layout('layouts/post-show-layout') -%>
+
+<main class="postShow mt-xl">
+    <div class="postShow__title-container mb-medium">
+        <h1 class = "heading-primary postShow__title"><%= post.title %></h1>    
+    </div>
+    
+    <div class="postShow__map-container">
+        <div class = "postShow__map" id='map'></div>
+    </div>
+    
+    <div class = "postShow__content">
+        <% include ../partials/imageSlider %>
+        
+        <div class = "postShow__location">
+            <%= post.location %>
+        </div>
+        
+        <div class = postShow__ratings>
+            <% for(let i = 0; i < 5; i++ ) { %>
+                <% if (i < floorRating) { %>
+                    <i class="fas fa-star"></i>
+                <% } else if((post.avgRating - i) > 0 && (post.avgRating - i) < 1) {%>
+                    <i class="fas fa-star-half-alt"></i>
+                <% } else { %>
+                    <i class="far fa-star"></i>
+                <% } %>
+            <% } %>
+        </div>
+        
+        <div class = "postShow__price"><%= post.price %>$</div>
+        
+        <div class = "postShow__description">
+            <%= post.description %>
+        </div>
+
+        <div class = "postShow__edit-delete-btn">
+            <% if(currentUser && currentUser.adminCode === process.env.ADMIN_CODE || currentUser && post.author.equals(currentUser._id) ){ %>
+                <div class = "postShow__edit-btn">
+                    <button class="btn btn--warning">
+                        <a href="/posts/<%= post.id %>/edit" class="btn__link">Edit</a>
+                    </button>
+                </div>
+                <div class="postShow__delete-btn">
+                    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                        <button class="btn btn--danger">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    
+    <div class="postShow__reviews">
+        <div class="postShow__review-heading">
+            <h3 class="heading-secondary">Reviews</h3>
+        </div>
+        <% if (!post.reviews.length)  { %>
+            <div class="postShow__review-info">
+                <h4 class = ""><em>No reviews yet</em></h4>
+            </div>
+        <% } %>
+        
+
+        <% post.reviews.forEach(function(review){ %>
+            <div class="postShow__review">
+                <div class= "postShow__review-author">
+                    <div class = "postShow__review-author-img">
+                        <img class = "postShow__review-author-img-avatar" src = "<%= review.author.image.secure_url %>" alt = "user image" />
+                    </div>
+                    <div class = "postShow__review-author-name" >
+                        <h3 class="heading-tertiary"><%= review.author.username %></h3>
+                    </div>
+                </div>
+                <p class="postShow__review-body"><%= review.body %></p>
+                <p class="postShow__review-rating">Rating: <%= review.rating %></p>
+                <% if(currentUser && review.author.equals(currentUser._id) || currentUser && currentUser.adminCode === process.env.ADMIN_CODE){ %>
+                    <button class='postShow__review-editBtn btn btn--warning'>Edit</button>
+                    <form class = "postShow__review-deleteBtn" action="/posts/<%= post.id %>/reviews/<%= review.id %>?_method=DELETE" method="POST">
+                        <button class="btn btn--danger">Delete</button>
+                    </form>
+                    <form action="/posts/<%= post.id %>/reviews/<%= review.id %>?_method=PUT" method="POST" class="postShow__reviewForm postShow__review-editForm postShow__review-undisplayed">
+                        <textarea class="postShow__reviewForm-text" name="review[body]" required><%= review.body %></textarea>
+                        <fieldset class="starability-basic postShow__reviewForm-field">
+                            <input type="radio" id="edit-rate0" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+                            <input type="radio" id="edit-rate1" name="review[rating]" value="1" />
+                            <label for="edit-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="edit-rate2" name="review[rating]" value="2" />
+                            <label for="edit-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="edit-rate3" name="review[rating]" value="3" />
+                            <label for="edit-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="edit-rate4" name="review[rating]" value="4" />
+                            <label for="edit-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="edit-rate5" name="review[rating]" value="5" />
+                            <label for="edit-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                        <button class="clear-rating btn btn--danger postShow__reviewForm-clear" type="button">Clear Rating</button>
+                        <button class="btn btn--success postShow__reviewForm-submit">Update</button>
+                    </form>
+        
+                    <script>
+                        $('#edit-rate<%= review.rating %>').prop('checked', true);
+                    </script>
+                <% }; %>
+            </div>
+        <% }); %>
+    </div>
+    
+    <div class="postShow__createReview">
+        <% if(currentUser){ %>
+            <h2 class="mb-medium heading-secondary">Create a Review</h2>
+            <form action="/posts/<%= post.id %>/reviews" method="POST" class="postShow__reviewForm">
+                <textarea class="postShow__reviewForm-text" name="review[body]" required></textarea>
+                <fieldset class="starability-basic postShow__reviewForm-field">
+                    <input type="radio" id="rate0" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="rate1" name="review[rating]" value="1" />
+                    <label for="rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="rate2" name="review[rating]" value="2" />
+                    <label for="rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="rate3" name="review[rating]" value="3" />
+                    <label for="rate3" title="Average">3 stars</label>
+                    <input type="radio" id="rate4" name="review[rating]" value="4" />
+                    <label for="rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="rate5" name="review[rating]" value="5" />
+                    <label for="rate5" title="Amazing">5 stars</label>
+                </fieldset>
+                <button class="clear-rating btn btn--danger postShow__reviewForm-clear" type="button">Clear Rating</button>
+                <button class="btn btn--success postShow__reviewForm-submit">Submit</button>
+            </form>
+        <% }else{ %>
+            <h2 class="heading-secondary postShow__createReview-heading"><a href="/login?returnTo=true">Create a Review</a></h2>
+        <% } %>
+    </div>
+</main>

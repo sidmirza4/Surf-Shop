@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class = "register">
+    <h1 class = "heading-primary heading-primary--light register__heading mb-medium">Welcome to Surf Shop</h1>
+    <form class = "form register__form" action="/register" method="POST" enctype="multipart/form-data">
+        <div class="register__form-group--1">
+            <label class = "form__label" for="username">Username</label>
+            <input class = "form__input" type="text" id="username" name="username" value="<%= username %>" placeholder="Username" required>
+        </div>
+        <div class="register__form-group--2">
+            <label class = "form__label" for="password">Password</label>
+            <input class = "form__input" type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="register__form-group">
+            <label class = "form__label" for="email">Email</label>
+            <input class = "form__input" type="text" id="email" name="email" value="<%= email %>" placeholder="E-Mail" required>
+        </div>
+        <div class="register__form-group">
+            <label class = "form__label" for="adminCode">Admin Code</label>
+            <input class = "form__input" type="password" id="adminCode" name="adminCode" placeholder="Admin Code (Only for Admin)">
+        </div>
+        <div class="register__form-group--file">
+            <label class="form__label--file" for="image"><i class="fas fa-camera"></i> Image</label>
+            <input class = "form__input--file" type="file" id="image" name="image">
+        </div>
+        <button class = "register__btn btn btn--blue">Register</button>
+    </form>
+</div>

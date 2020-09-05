@@ -1,0 +1,42 @@
+.heading-primary{
+    font-size: 6rem;
+    font-weight: 300;
+    font-family: $font-sec;
+    color: $col-primary-d;
+    text-shadow: none;
+    transform: scale(1);
+    transition: all .3s;
+    
+    &:hover{
+        text-shadow: 0 .5rem 1rem rgba($col-black, .6);
+        transform: scale(1.05);
+    }
+    
+    &--light{
+        color: $col-grey-l-1;
+    }
+}
+
+.heading-secondary{
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: $font-sec;
+    color: $col-primary-d;
+    letter-spacing: 1.2px;
+    
+    &--light{
+        color: $col-grey-l-1;
+    }
+}
+
+.heading-tertiary{
+    font-size: 2.2rem;
+    font-weight: 600;
+    font-family: $font-pri;
+    color: $col-primary-d;
+    letter-spacing: 1px;
+    
+    &--light{
+        color: $col-grey-l-1;
+    }
+}

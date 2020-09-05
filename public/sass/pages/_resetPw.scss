@@ -1,0 +1,39 @@
+.resetPw{
+    grid-column: 2 / 3;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 6rem 10rem;
+    box-shadow: inset -1rem -1rem 1.2rem rgba($col-black, .5), inset .75rem .75rem 1.1rem rgba($col-black, .5);
+    
+    @include respond(tab-port){
+        padding: 4rem 6rem;
+    }
+    
+    &__heading{
+        text-align: center;
+    }
+    
+    &__form{
+        display: grid;
+        grid-template-columns: minmax(3rem, 5rem) repeat(3, 1fr) minmax(3rem, 5rem);
+        grid-template-rows: repeat(3, 1fr);
+        row-gap: 3rem;
+        align-items: center;
+    }
+    
+    &__form-group{
+        grid-column: 2 / 5;
+        justify-self: stretch;
+    }
+    
+    &__btn{
+        grid-column: 3 / 4;
+        justify-self: center;
+        
+        @include respond(tab-port){
+            grid-column: 2 / 5;
+        }
+    }
+}

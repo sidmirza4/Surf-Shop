@@ -1,0 +1,50 @@
+/*
+MEDIA QUERY MANAGER
+
+0 - 500px:          Phone
+500 - 800px:        Tablet Portrait
+800 - 1100px:       Tablet Landscape
+1100 - 1400px:      Mini Desktop
+[1400 - 2000px]:    Normal CSS Styles
+2000px + :          Big Desktop
+
+$breakpoint Argument Choices
+- phone
+- tab-port
+- tab-land
+- mini-desk
+- big-desk
+ORDER: Base + Typography > General Layout + Grid > Page Layout > Components
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media only screen and (max-width: 500px) {
+      @content
+    }
+  }
+
+  @if $breakpoint==tab-port {
+    @media only screen and (max-width: 800px) {
+      @content
+    }
+  }
+
+  @if $breakpoint==tab-land {
+    @media only screen and (max-width: 1100px) {
+      @content
+    }
+  }
+  
+  @if $breakpoint==mini-desk {
+    @media only screen and (max-width: 1400px) {
+      @content
+    }
+  }
+
+  @if $breakpoint==big-desk {
+    @media only screen and (min-width: 2000px) {
+      @content
+    }
+  }
+}

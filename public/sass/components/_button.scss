@@ -1,0 +1,70 @@
+.btn {
+    padding: 1.2rem 1.8rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $col-grey-l-1;
+    color: $col-primary-d;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    border-radius: 3rem;
+    transform: translateY(-1.5px);
+    transition: .2s linear all;
+    box-shadow: 0 .4rem 1rem rgba($col-black, .6);
+    font-family: $font-pri;
+    font-weight: 600;
+    
+    &:hover{
+        box-shadow: none;
+    }
+    
+    &:active,
+    &:focus{
+        box-shadow: none;
+    }
+    
+    &__link,
+    &__link:link,
+    &__link:visited{
+        text-decoration: none;
+        font-family: inherit;
+        color: inherit;
+    }
+    
+    &--blue{
+        background-color: $col-primary-d;
+        color: $col-grey-l-1;
+        
+        &:hover {
+            background-color: darken($col-primary-d, 5%);
+        }
+    }
+    
+    &--danger{
+        background-color: $col-danger;
+        color: $col-grey-l-1;
+        
+        &:hover {
+            background-color: darken($col-danger, 5%);
+        }
+    }
+    
+    &--warning{
+        background-color: $col-warning;
+        color: $col-white;
+        
+        &:hover {
+            background-color: darken($col-warning, 5%);
+        }
+    }
+    
+    &--success{
+        background-color: $col-success;
+        color: $col-white;
+        
+        &:hover {
+            background-color: darken($col-success, 5%);
+        }
+    }
+}

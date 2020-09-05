@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Raleway:wght@100;200;300;400;600&display=swap" rel="stylesheet">  
+        <link rel='stylesheet' href='/css/style.css' />
+        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+        <script src="https://kit.fontawesome.com/49b4b0b11c.js" crossorigin="anonymous"></script>
+    </head>
+    
+    <body class="landing">
+        
+        <div class="landing__section">
+            <div class="landing__logo">
+                <i class="fab fa-skyatlas landing__logo-icon"></i>
+            </div>
+            <div class = "landing__content">
+                <h1 class = "landing__header landing__header--1">Surf</h1>
+                <h1 class = "landing__header landing__header--2">Shop</h1>
+            </div>
+        </div>
+        
+        <div class="landing__map-section">
+            <div class="landing__heading">
+                <h1 class="heading-primary heading-primary--light mt-huge mb-medium">See Our Locations</h1>
+            </div>
+            <div class="landing__map" id="map"></div>
+            <div class="landing__home">
+                <div class="landing__home-icon landing__home-icon--1">
+                    <i class="fas fa-angle-double-right"></i>
+                </div>
+                <div class="landing__home-btn">
+                    <a class="landing__home-link" href = "/posts">Surf-Boards</a>
+                </div>
+                 <div class="landing__home-icon landing__home-icon--2">
+                    <i class="fas fa-angle-double-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <% include ./partials/footer.ejs %>
+
+        <script>
+            mapboxgl.accessToken = "<%= mapBoxToken %>";
+            var posts = {features: <%- JSON.stringify(posts) %>};
+        </script>
+        <script src="/javascripts/allPostsClusterMap.js"></script>
+        
+    </body>
+
+</html>
+

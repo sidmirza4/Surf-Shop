@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="forgotPw">
+    <h1 class = "heading-primary heading-primary--light forgotPw__heading mb-medium">Forgot Password</h1>
+    
+    <form class="form forgotPw__form" action="/forgot-password?_method=PUT" method="POST">
+        <div class="forgotPw__form-group">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="text" id="email" name="email" placeholder = "E-Mail" autofocus required>
+        </div>
+        <button class = "forgotPw__btn btn btn--blue">Reset Password</button>
+    </form>
+</div>
+

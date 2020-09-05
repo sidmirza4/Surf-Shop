@@ -1,0 +1,15 @@
+<% if(success && success.length){ %>
+    <div class = "flash flash--success">
+        <h3 class='flash-message flash-message--success'>
+            <%= success %>
+        </h3>
+    </div>
+<% } %>
+
+<% if(error && error.length){ %>
+    <div class="flash flash--error">
+        <h3 class='flash-message flash-message--error'>
+            <%= error %>
+        </h3>
+    </div>
+<% } %>

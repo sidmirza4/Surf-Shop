@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="profile">
+    <div class="profile__imgBox mb-small">
+        <img class="profile__img" src="<%= currentUser.image.secure_url %>" alt="<%= currentUser.username %>'s Profile Image" class="profile-image">
+    </div>
+    
+    <h1 class = "heading-primary heading-primary--light profile__heading mb-small">
+        <%= currentUser.username %>
+    </h1>
+
+    <form class = "form profile__form" action="/profile?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="profile__form-group--1">
+            <label class = "form__label" for="username">Username</label>
+            <input class = "form__input" type="text" id="username" name="username" placeholder="Username" value="<%= currentUser.username %>" autofocus required>
+        </div>
+        <div class="profile__form-group--2">
+            <label class = "form__label" for="current-password">Current Password (Required to update the profile)</label>
+            <input class = "form__input" type="password" id="current-password" name="currentPassword" placeholder="Current Password" required>
+        </div>
+        <div class="profile__form-group--1">
+            <label class = "form__label" for="new-password">New Password</label>
+            <input class = "form__input" type="password" id="new-password" name="newPassword" placeholder="New Password">
+        </div>
+        <div class="profile__form-group--2">
+            <label class = "form__label" for="password-confirmation">Confirm Password</label>
+            <input class = "form__input" type="password" id="password-confirmation" name="passwordConfirmation" placeholder="Password Confirmation">
+        </div>
+        <div class="profile__form-group--1">
+            <label class = "form__label" for="email">Email</label>
+            <input class = "form__input" type="text" id="email" name="email" placeholder="Email" value="<%=currentUser.email%>" required>
+        </div>
+        <div class="profile__form-group--2">
+            <label class = "form__label" for="adminCode">Admin Code</label>
+            <input class = "form__input" type="password" id="adminCode" name="adminCode" placeholder="Admin Code (Only for Admin)">
+        </div>
+        <div class="profile__form-group--file">
+            <label class = "form__label--file" for="image"><i class="fas fa-camera"></i> Image</label>
+            <input class = "form__input--file" type="file" id="image" name="image">
+        </div>
+        <div class = "profile__validate" id="validation-message">
+        </div>
+        <button class = "profile__btn btn btn--blue" id="update-profile">Submit</button>
+    </form>
+</div>
+
+
+
+<script src="/javascripts/profile.js"></script>

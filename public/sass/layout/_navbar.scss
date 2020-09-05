@@ -1,0 +1,267 @@
+.navbar {
+    height: 8vh;
+    font-size: 2rem;
+    padding: 0 4rem;
+    font-weight: 600;
+    color: $col-grey-l-1;
+    
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 1s;
+    
+    @include respond(mini-desk) {
+        height: auto;
+    }
+    
+    &--fix{
+        position: fixed;
+        color: $col-primary-d;
+    }
+    
+    &--scrolled-text {
+        color: $col-grey-l-1;
+    }
+    
+    &--boilerplate{
+        color: $col-grey-l-1;
+    }
+    
+    &--active{
+        color: $col-grey-l-1;
+    }
+    
+    &__menu{
+        @include respond(tab-port){
+            position: relative;
+        }
+    }
+    
+    &--scrolled {
+        background-color: $col-primary-d;
+    }
+    
+    &__logo-icon,
+    &__logo-icon:link,
+    &__logo-icon:visited{
+        font-size: 6rem;
+        color: inherit;
+    }
+    
+    &__list{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        
+        @include respond(tab-port) {
+            display: none;
+        }
+    }
+    
+    &__item {
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid transparent;
+        transition: .2s linear all;
+        
+        &:not(:last-child){
+            margin-right: 2rem;
+        }
+        
+        @include respond(tab-port) {
+            color: $col-grey-l-1;
+        }
+    }
+    
+    &__item:hover,
+    &__item:focus,
+    &__item:active{
+        border-bottom: 1px solid currentColor;
+        transform: scale(1.05);
+    }
+    
+    &__link,
+    &__link:link,
+    &__link:visited{
+        text-decoration: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+    
+    // HAMBURGER-NAVBAR STYLE
+    
+    &__hamburger{
+        display: none;
+        
+        @include respond(tab-port){
+            display: inline-block;
+            height: 8rem;
+            width: 8rem;
+            border: 3px solid currentColor;
+            border-radius: 50%;
+            position: relative;
+            z-index: 5;
+            cursor: pointer;
+            transform: scale(.8);
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            &--active{
+                border: 3px solid $col-grey-l-1;
+            }
+            
+            &--active .navbar__bar {
+                color: $col-grey-l-1;
+            }
+
+            &--active .navbar__bar::after{
+                top: 0;
+            }
+            
+            &--active .navbar__bar::before{
+                bottom: 0;
+            }
+        }
+        
+        &::after{
+            content: '';
+            position: absolute;
+            height: 120%;
+            width: 120%;
+            border-radius: 50%;
+            border: 3px solid currentColor;
+            animation: hamburger_pulse .8s ease infinite;
+        }
+    }
+    
+    &__bar {
+        display: none;
+        
+        @include respond(tab-port) {
+            height: 3px;
+            width: 4.5rem;
+            position: relative;
+            background-color: currentColor;
+            z-index: -1;
+            display: inline-block;
+            
+            &::after, &::before{
+                content: '';
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color: currentColor;
+                transition: .3s ease;
+                transition-property: top, bottom;
+            }
+            
+            &::after{
+                top: 1.2rem;
+            }
+            
+            &::before{
+                bottom: 1.2rem;
+            }
+        }
+    }
+    
+    &__mobile{
+        position: fixed;
+        top: 0;
+        right: -120%;
+        height: 100vh;
+        width: 100vw;
+        background-color: $col-primary-d;
+        z-index: 4;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        @include respond(tab-port) {
+            transition: .4s all cubic-bezier(.24,.57,.27,1);
+            
+            &--active {
+                right: 0;
+            }
+        }
+        
+        &-list{
+            list-style: none;
+            color: $col-grey-l-1;
+            font-size: 6rem;
+            text-transform: uppercase;
+            font-family: $font-sec;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        &-item{
+            &:not(:last-child){
+                margin-bottom: 4rem;
+            }
+            
+            &:nth-child(1) .navbar__mobile-link::after {
+                animation: menu_1 ease 10s infinite;
+            }
+            
+            &:nth-child(2) .navbar__mobile-link::after {
+                animation: menu_2 ease 10s infinite;
+            }
+            
+            &:nth-child(3) .navbar__mobile-link::after {
+                animation: menu_3 ease 10s infinite;
+            }
+            
+            &:nth-child(4) .navbar__mobile-link::after {
+                animation: menu_4 ease 10s infinite;
+            }
+            
+            &:nth-child(5) .navbar__mobile-link::after {
+                animation: menu_5 ease 10s infinite;
+            }
+        }
+        
+        &-link,
+        &-link:visited,
+        &-link:link{
+            color: inherit;
+            text-decoration: none;
+            padding: 2rem 3rem;
+            letter-spacing: .5rem;
+            position: relative;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        &-link::after{
+            content: attr(data-after);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: rgba($col-grey-l-1, 0.10);
+            font-size: 15rem;
+            font-weight: 700;
+            letter-spacing: 10rem;
+            z-index: -1;
+            transition: .3s ease letter-spacing;
+            text-align: center;
+        }
+    }
+}

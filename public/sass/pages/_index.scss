@@ -1,0 +1,170 @@
+.posts{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 4rem;
+    font-size: 1.5rem;
+    width: 95%;
+    margin: 5rem auto;
+    
+    @include respond(tab-land){
+        grid-row-gap: 8rem;
+        padding: 0 2rem;
+        margin: 0;
+    }
+    
+    &__map-container{
+        grid-row: 1 / -1;
+        grid-column: 1 / 2;
+        align-self: flex-start;
+        position: sticky;
+        top: 10rem;
+        
+        @include respond(tab-land){
+            grid-column: 1 / -1;
+            position: relative;
+            top: 0;
+            padding: 0 5rem;
+        }
+        
+        @include respond(tab-land){
+            margin-top: 5rem;
+        }
+    }
+    
+    &__map{
+        height: 50rem;
+        border-radius: 5px;
+        transform: scale(1);
+        transition: all .3s;
+        
+        &:hover{
+            box-shadow: .5rem 1rem 2rem rgba($col-black, .4);
+            transform: scale(1.02);
+        }
+    }
+    
+    &__map-heading{
+        width: max-content;
+        margin: 0 auto 6rem auto;
+        
+        @include respond(tab-land){
+            margin: 0 auto 4rem auto;
+        }
+    }
+    
+    &__allPosts-container{
+        grid-column: 2 / -1;
+        
+        display: grid;
+        justify-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+        row-gap: 6rem;
+        column-gap: 0;
+        
+        @include respond(tab-land){
+            grid-column: 1 / -1;
+            grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+        }
+        
+        @include respond(tab-port){
+            grid-template-columns: repeat(auto-fit, minmax(34rem, 1fr));
+        }
+        
+        @include respond(phone){
+            grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+        }
+    }
+    
+    &__surf-heading{
+        grid-column: 1 / -1;
+    }
+}
+
+.post {
+    position: relative;
+    width: 35rem;
+    height: 45rem;
+
+    &:hover &__img {
+     filter: blur(.3rem);
+    }   
+
+    &:hover &__front {
+        outline: 1.5rem solid $col-primary-d;
+        transform: scale(.87);
+        
+        &::after{
+            opacity: 0.75;
+        }
+    }
+    
+    &:hover &__back {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    &__front {
+        width: 100%; 
+        height: 100%;
+        position: relative;
+        outline-offset: 2rem;
+        transform: scale(1);
+        transition: all .4s ease-out;
+        
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: 0;
+            transition: all .4s ease-out;
+        }
+    }
+    
+    &__img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    
+    &__back{
+        height: 75%;
+        width: 75%;
+        position: absolute;
+        top: 12.5%;
+        left: 12.5%;
+        color: $col-grey-l-1;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        opacity: 0;
+        transform: scale(0.7);
+        transition: all 0.4s ease-out;
+    }
+    
+    &__price{
+        font-family: $font-sec;
+        font-size: 5rem;
+        font-weight: 300;
+    }
+    
+    &__description{
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: justify;
+        
+    }
+    
+    &__location{
+        font-weight: 600;
+        font-size: 1.7rem;
+        border-bottom: 1px solid $col-grey-l-1;
+    }
+}

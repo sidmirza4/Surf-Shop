@@ -1,0 +1,56 @@
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;   // 1rem = 10px
+    
+    @include respond(big-desk){
+        font-size: 75%;   // 1rem = 12px
+    }
+    
+    @include respond(mini-desk){
+        font-size: 50%;   // 1rem = 8px
+    }
+    
+    @include respond(tab-port) {
+        font-size: 43.75%;  // 1rem = 7px
+    }
+    
+    @include respond(phone){
+        font-size: 37.5%;   // 1rem = 6px
+    }
+}
+
+body{
+    box-sizing: border-box;
+    font-family: $font-pri;
+}
+
+.success,
+.danger{
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.success {
+    color: $col-success;
+    border-bottom: 2px solid $col-success;
+}
+.danger {
+    color: $col-danger;
+    border-bottom: 2px solid $col-danger;
+}
+
+.logo {
+    color: white
+}
+.logo:hover {
+    color: white;
+}

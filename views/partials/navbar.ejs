@@ -1,0 +1,46 @@
+<div class = "navbar__mobile">
+    <ul class="navbar__mobile-list">
+        <% if (!currentUser) { %>
+            <li class="navbar__mobile-item"><a data-after="Home" class = "navbar__mobile-link" href="/posts">Home</a></li>
+            <li class="navbar__mobile-item"><a data-after="About" class = "navbar__mobile-link" href="/about">About</a></li>
+            <li class="navbar__mobile-item"><a data-after="Contact" class = "navbar__mobile-link" href="/about">Contact</a></li>
+            <li class="navbar__mobile-item"><a data-after="Register" class = "navbar__mobile-link" href="/register">Register</a></li>
+            <li class="navbar__mobile-item"><a data-after="Login" class = "navbar__mobile-link" href="/login">Login</a></li>
+        <% } else { %>
+            <li class="navbar__mobile-item"><a data-after="Home" class = "navbar__mobile-link" href="/posts">Home</a></li>
+            <li class="navbar__mobile-item"><a data-after="About" class = "navbar__mobile-link" href="/about">About</a></li>
+            <li class="navbar__mobile-item"><a data-after="New Post" class = "navbar__mobile-link" href="/posts/new">New Post</a></li>
+            <li class="navbar__mobile-item"><a data-after="Profile" class = "navbar__mobile-link" href="/profile">Profile</a></li>
+            <li class="navbar__mobile-item"><a data-after="Logout" class = "navbar__mobile-link" href="/logout">Logout</a></li>
+        <% } %>
+    </ul>
+</div>
+
+<nav class="navbar navbar--fix">
+    <div class="navbar__logo">
+        <a href = "/" class="navbar__logo-icon"><i class="fab fa-skyatlas"></i></a>
+    </div>
+    
+    <div class="navbar__menu">
+        <div class="navbar__hamburger">
+            <div class="navbar__bar"></div>
+        </div>
+        <ul class="navbar__list">
+            <% if (!currentUser) { %>
+                <li class="navbar__item"><a data-after="Home" class = "navbar__link" href="/posts">Home</a></li>
+                <li class="navbar__item"><a data-after="About" class = "navbar__link" href="/about">About</a></li>
+                <li class="navbar__item"><a data-after="Contact" class = "navbar__link" href="/about">Contact</a></li>
+                <li class="navbar__item"><a data-after="Register" class = "navbar__link" href="/register">Register</a></li>
+                <li class="navbar__item"><a data-after="Login" class = "navbar__link" href="/login">Login</a></li>
+            <% } else { %>
+                <li class="navbar__item"><a data-after="Home" class = "navbar__link" href="/posts">Home</a></li>
+                <li class="navbar__item"><a data-after="About" class = "navbar__link" href="/about">About</a></li>
+                <li class="navbar__item"><a data-after="New Post" class = "navbar__link" href="/posts/new">New Post</a></li>
+                <li class="navbar__item"><a data-after="Profile" class = "navbar__link" href="/profile">Profile</a></li>
+                <li class="navbar__item"><a data-after="Logout" class = "navbar__link" href="/logout">Logout</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
+
+<script src="/javascripts/navbar.js" ></script>

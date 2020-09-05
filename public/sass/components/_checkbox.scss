@@ -1,0 +1,45 @@
+.checkbox-group {
+    width: 16%;
+    display: inline-block;
+}
+
+.checkbox-input{
+    display: none;
+}
+
+.checkbox-label{
+    font-size: inherit;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4rem;
+    color: $col-grey-l-1;
+    font-weight: 600;
+}
+
+.checkbox-btn{
+    height: 2.5rem;
+    width: 2.5rem;
+    border: .4rem solid $col-primary;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.15rem;
+    
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 1.1rem;
+      width: 1.1rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $col-primary;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+}
+
+  .checkbox-input:checked~.checkbox-label .checkbox-btn::after {
+    opacity: 1;
+  }

@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="resetPw">
+    <h1 class = "heading-primary heading-primary--light resetPw__heading mb-medium">Reset Password</h1>
+
+    <form class="form resetPw__form" action="/reset/<%= token %>?_method=PUT" method="POST">
+        <div class="resetPw__form-group">
+            <label class="form__label" for="password">New Password</label>
+            <input class="form__input" type="password" id="password" name="password" placeholder="New Password" autofocus required>
+        </div>
+        <div class="resetPw__form-group">
+            <label class="form__label" for="confirm">Confirm Password</label>
+            <input class="form__input" type="password" id="confirm" name="confirm" placeholder="Confirm Password" required>
+        </div>
+        <button class = "resetPw__btn btn btn--blue">Update Password</button>
+    </form>
+</div>
+

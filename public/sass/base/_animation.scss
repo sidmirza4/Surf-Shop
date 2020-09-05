@@ -1,0 +1,144 @@
+@keyframes moveDownFade{
+    0%{
+        transform: translateX(-10rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveUpFade {
+    0% {
+        transform: translateX(10rem);
+        opacity: 0;
+    }
+    
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes homeBtnMove{
+    0%{
+        opacity: 0;
+        transform: translateY(10%); 
+    }
+    
+    100%{
+        opacity: 1;
+        transform: translateY(-2%);
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes hamburger_pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes menu_1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+
+  10% {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+  }
+
+  20% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+}
+
+@keyframes menu_2 {
+  20% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+
+  30% {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+  }
+
+  40% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+}
+
+@keyframes menu_3 {
+  40% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+  }
+
+  60% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+}
+
+@keyframes menu_4 {
+  60% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+  }
+
+  80% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+}
+
+@keyframes menu_5 {
+  80% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+
+  90% {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+    letter-spacing: 12rem;
+  }
+}

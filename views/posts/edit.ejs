@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="editPost">
+    <h1 class = "heading-primary heading-primary--light editPost__heading mb-small">Edit Post</h1>
+
+    <form class = "form editPost__form" action="/posts/<%= post.id %>?_method=PUT" method="POST" id="postEditForm" enctype="multipart/form-data">
+        <div class="editPost__form-group">
+            <label class = "form__label" for = "title">Title</label>
+            <input class = "form__input" id = "title" name="post[title]" type="text" placeholder = "Title" value='<%= post.title %>' required>
+        </div>
+        <div class="editPost__form-group--price">
+            <label class = "form__label" for = "price" class = "form__label">Price</label>
+            <input class = "form__input" id = "price" name="post[price]" type="number" placeholder = "Price" step="0.01" value='<%= post.price %>' required>
+        </div>
+        <div class="editPost__form-group--location">
+            <label class = "form__label" for = "location" class = "form__label">Location</label>
+            <input class = "form__input" id = "location" name="post[location]" placeholder = "Location" type="text" value='<%= post.location %>' required>
+        </div>
+        <div class="editPost__form-group--description">
+            <label class = "form__label" for = "desp" class = "form__label">Description</label>
+            <textarea class = "form__input form__input--textarea" id = "desp" placeholder = "Description" name="post[description]" required><%= post.description %></textarea>
+        </div>
+        <div class="editPost__form-group--images">
+            <% post.images.forEach(function(image,i){ %>
+                <div class="editPost__form-imgBox">
+                    <label class = "editPost__form-checkLabel form__label--check" for="image<%= i %>"></label>
+                    <img class="editPost__form-image editPost__fadein" src="<%= image.url %>" alt="Post Image">
+                    <input class="form__input--check imageDeleteCheckbox" type="checkbox" name="deleteImages[]" id="image<%= i %>" value="<%= image.public_id %>">
+                </div>
+            <% });  %>
+        </div>
+        <div class="editPost__form-group--file">
+            <label for = "imageUpload" class = "form__label--file">Images</label>
+            <input class = "form__input--file" type="file" id="imageUpload" accept="images/*" name="images" multiple>
+        </div>
+        <button class = "editPost__btn btn btn--blue">Submit</button>
+    </form>
+</div>
+
+<script src="/javascripts/post-edit.js"></script>
+
+<!-- For the Checkbox input, when we are adding the name attribute, we are using the value as "deleteImages[]" -->
+<!-- This tells the body-parser, that under this name, there are multiple input/s that are coming back -->
+<!-- And each one of the URL/s will be a string in the Array -->

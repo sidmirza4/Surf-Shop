@@ -1,0 +1,110 @@
+.form {
+    
+    &__label {
+        display: none;
+        
+        &--file {
+            background-color: $col-primary-d;
+            padding: 1.2rem 1.8rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            border-radius: 3rem;
+            color: $col-grey-l-1;
+            box-shadow: 0 .4rem 1rem rgba($col-black, 0.6);
+            transform: translateY(-1.5px);
+            transition: all .2s ease-out;
+                
+            &:hover {
+                box-shadow: none;
+                transform: translateY(0);
+                background-color: darken($col-primary-d, 5%);
+            }
+        }
+        
+        &--check {
+            position: relative;
+            font-size: inherit;
+            cursor: pointer;
+            font-weight: 600;
+            color: $col-grey-l-1;
+            height: 2.5rem;
+            width: 2.5rem;
+            background-color: rgba($col-black, 0.7);
+            border-radius: 50%;
+            display: inline-block;
+            
+            
+            &::after {
+                content: "X";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: $col-grey-l-1;
+                font-weight: 600;
+                font-family: $font-pri;
+                font-size: 1.6rem;
+            }
+        }
+    }
+    
+    &__input {
+        position: relative;
+        width: 100%;
+        border-radius: 10rem;
+        padding: 2rem 3rem;
+        font-size: 1.8rem;
+        font-weight: 500;
+        letter-spacing: 1.4px;
+        border: none;
+        outline: none;
+        text-align: center;
+        
+        background-color: rgba($col-black, .4);
+        color: $col-white;
+        opacity: 1;
+        filter: none;
+        transform: scale(1);
+        transition: all 0.2s ease-out;
+
+        &::placeholder {
+            color: $col-white;
+            opacity: 1;
+            transition: color 0.2s ease-out;
+        }
+        
+        &:invalid{
+            box-shadow: .3rem .3rem .5rem rgba($col-primary-d, 0.5), -.3rem -.3rem .5rem rgba($col-primary-d, 0.5);
+        }
+        
+        &:focus, 
+        &:active{
+            background-color: rgba($col-black, 0);
+            box-shadow: inset -5px -5px 5px rgba($col-black, 0.4), inset 5px 5px 5px rgba($col-black, 0.4);
+            transform: scale(1.05);
+        }
+        
+        &--file {
+            width: 0.1px;
+        	height: 0.1px;
+        	opacity: 0;
+        	overflow: hidden;
+        	position: absolute;
+        	z-index: -1;
+        }
+        
+        &--textarea {
+            height: 100%;
+            border-radius: 5rem;
+            font-family: inherit;
+            text-align: justify;
+        }
+        
+        &--check {
+            display: none;
+        }
+    }
+}
